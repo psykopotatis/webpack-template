@@ -25,7 +25,30 @@ module.exports = {
                     }
                 }
             },
-            { test: /\.txt$/, use: 'raw-loader' }
+            {
+                test: /\.txt$/,
+                use: 'raw-loader'
+            },
+            {
+                test: /\.css$/,
+                // Order is important! Loaders are applied from right to left
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.less$/,
+                use: ['style-loader', 'css-loader', 'less-loader']
+            },
+            {
+                test: /\.(jpeg|png|gif|svg)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: { limit: 40000 },
+
+                    },
+                    'image-webpack-loader'
+                ]
+            }
         ]
     },
     plugins: [

@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import Header from './Header';
+import Star from './Star';
+
 
 import sum from './sum';
 
@@ -16,9 +19,8 @@ function Welcome(props) {
 function App() {
     return (
         <div>
-            <Welcome name="Sara" />
-            <Welcome name="Cahal" />
-            <Welcome name="Edite" />
+            <Header/>
+            <Star/>
         </div>
     );
 }
