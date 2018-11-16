@@ -1,17 +1,29 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //installed via npm
 const webpack = require('webpack'); //to access built-in plugins
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
 module.exports = {
     entry: {
-        bundle: './src/index.js',
+        app: './src/index.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         // Save with the key from the entry section. Ie bundle.js, vendor.js
         // Chunkhash is a hash of the contents of the file.
-        filename: '[name].[chunkhash].js'
+        filename: '[name].[hash].js'
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    enforce: true
+                }
+            }
+        }
     },
     module: {
         rules: [
@@ -32,11 +44,18 @@ module.exports = {
             {
                 test: /\.css$/,
                 // Order is important! Loaders are applied from right to left
-                use: ['style-loader', 'css-loader'],
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader'
+                ]
             },
             {
                 test: /\.less$/,
-                use: ['style-loader', 'css-loader', 'less-loader']
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'less-loader'
+                ]
             },
             {
                 test: /\.(jpeg|png|gif|svg)$/,
@@ -52,6 +71,9 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({template: './src/index.html'})
+        new HtmlWebpackPlugin({template: './src/index.html'}),
+        new MiniCssExtractPlugin({
+            filename: '[name].[hash].css'
+        })
     ]
 };
