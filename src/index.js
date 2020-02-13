@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Header from './Header';
 import Star from './Star';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 
 import sum from './sum';
 
@@ -20,6 +21,7 @@ function App() {
     return (
         <div>
             <Header/>
+            <Button>adsf</Button>
             <Star/>
         </div>
     );
