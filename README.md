@@ -1,2 +1,11 @@
 # webpack-template
-!!111 :D
+React and webpack 4 template
+
+Install all dependencies
+
+<code>npm install</code>
+
+Run dev server
+
+<code>npm run dev</code>
+
