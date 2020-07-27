@@ -5,7 +5,8 @@ import Header from './Header';
 import Star from './Star';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
-
+import InputField from "./InputField";
+import GoogleMap from "./GoogleMap";
 import sum from './sum';
 
 console.log('yo');
@@ -21,6 +22,8 @@ function App() {
     return (
         <div>
             <Header/>
+            <InputField/>
+            <GoogleMap/>
             <Button>adsf</Button>
             <Star/>
         </div>
